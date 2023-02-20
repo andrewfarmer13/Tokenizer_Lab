@@ -1,37 +1,43 @@
-outputBuffer = []
+
 counter = 0
 def readFile(fileIn):
+    outputBuffer = []
     f = open(fileIn, "r")
-    # for char in f:
-    #     c = getChar(f)
-    #     counter += 1
-    #     if(c == "/"):
-    #         while True:
-    #             c2 = nextChar(f)
-    #             if(c2 != " " and (nextChar(f)) != None):
-    #                pass
-    #     else:
-    #         outputBuffer.append(c)
 
-    # lines = f.readlines()
-    # for lines in enumerate(lines):
-    #     line = lines.readline()
-    #     if lines[0] != "/":
-    #         outputBuffer.append(line)
+    for lines in enumerate(f):
+        line = f.readline()
+        print("Read: " + str(lines) + " "+line)
+        if( line[0] != "/" and line[0] != "/*"):
+            outputBuffer.append(lines[1])
+            outputBuffer.append(line)
         
 
     
-    for lines in f:
-        line = f.readline()
-        if line[0] != "/":
-            outputBuffer.append(line)
+    # for lines in f:
+    #     for word in lines.split():
+            
+    #         if word != "//":
+    #             if word == str(range_char("a", "z")):
+    #                 print("<Identifier>", word, "</Identifier>")
+    #             elif word == '0-9':
+    #                 print("<Digit>", word, "</Digit>")
 
+                
     return(outputBuffer)
 
-def getChar(f):
-    char = f[counter]
+def getChar(input):
+    char = input[counter]
     return(char)
 
 def nextChar(f):
     char = f[counter + 1]
     return(char)
+
+def lex(arrIn):
+    buffer = []
+    for strings in arrIn:
+        for words in strings:
+           char = getChar(words)
+           buffer.append(char)
+           print(buffer)
+        buffer = []

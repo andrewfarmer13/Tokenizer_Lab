@@ -7,7 +7,7 @@ if __name__ == "__main__":
        print(f)
     elif(file == "Main.jack"):
        f = tk.readFile(file)
-       print(f)
+       tk.lex(f)
 
     else:
         print("File does not exist, shutting down now!")
