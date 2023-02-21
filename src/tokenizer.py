@@ -1,3 +1,5 @@
+import re as RE
+
 
 counter = 0
 def readFile(fileIn):
@@ -6,7 +8,7 @@ def readFile(fileIn):
 
     for lines in enumerate(f):
         line = f.readline()
-        print("Read: " + str(lines) + " "+line)
+        #print("Read: " + str(lines) + " "+line)
         if( line[0] != "/" and line[0] != "/*"):
             outputBuffer.append(lines[1])
             outputBuffer.append(line)
@@ -26,18 +28,23 @@ def readFile(fileIn):
     return(outputBuffer)
 
 def getChar(input):
-    char = input[counter]
+    char = input
     return(char)
 
-def nextChar(f):
-    char = f[counter + 1]
+def nextChar(input):
+    char = input[counter + 1]
     return(char)
 
 def lex(arrIn):
     buffer = []
     for strings in arrIn:
         for words in strings:
-           char = getChar(words)
-           buffer.append(char)
-           print(buffer)
+           for letter in words:
+            if(words != " "):
+                char = getChar(words)
+                buffer.append(char)
+                #print(buffer)
+            for item in buffer:
+                if(item == "=" or item == ";"):
+                    print(" <symbol>" + item + "</symbol>")
         buffer = []
